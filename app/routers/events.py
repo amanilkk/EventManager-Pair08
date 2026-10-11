@@ -41,6 +41,7 @@ def create_event(
 
 
 
+
 @router.get(
     "/",
     response_model=list[EventSchema]
@@ -49,6 +50,12 @@ def list_events(
     search: str | None = Query(default=None),
     location: str | None = Query(default=None),
     db: Session = Depends(get_db)
+
+@router.get("/", response_model=list[EventSchema])
+def list_events(
+        search: str | None = Query(default=None),
+        db: Session = Depends(get_db)
+
 ):
     query = db.query(Event)
 
