@@ -12,4 +12,4 @@ events.db
 *.db
 
 .vscode/
-.idea/
+.idea/.coverage
