@@ -1,3 +1,4 @@
+
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -21,8 +22,8 @@ router = APIRouter(
     status_code=status.HTTP_201_CREATED
 )
 def create_event(
-    event: EventCreate,
-    db: Session = Depends(get_db)
+        event: EventCreate,
+        db: Session = Depends(get_db)
 ):
     if event.date < date.today():
         raise HTTPException(
@@ -39,17 +40,20 @@ def create_event(
     return db_event
 
 
-
-
-
 @router.get(
     "/",
     response_model=list[EventSchema]
 )
 def list_events(
+ feature-tests-participants
+        search: str | None = Query(default=None),
+        location: str | None = Query(default=None),
+        db: Session = Depends(get_db)
+
     search: str | None = Query(default=None),
     location: str | None = Query(default=None),
     db: Session = Depends(get_db)
+ main
 ):
     query = db.query(Event)
 
@@ -71,8 +75,8 @@ def list_events(
     response_model=EventSchema
 )
 def get_event(
-    event_id: int,
-    db: Session = Depends(get_db)
+        event_id: int,
+        db: Session = Depends(get_db)
 ):
     event = (
         db.query(Event)
@@ -94,9 +98,9 @@ def get_event(
     response_model=EventSchema
 )
 def update_event(
-    event_id: int,
-    event_data: EventUpdate,
-    db: Session = Depends(get_db)
+        event_id: int,
+        event_data: EventUpdate,
+        db: Session = Depends(get_db)
 ):
     event = (
         db.query(Event)
@@ -130,8 +134,8 @@ def update_event(
     status_code=status.HTTP_204_NO_CONTENT
 )
 def delete_event(
-    event_id: int,
-    db: Session = Depends(get_db)
+        event_id: int,
+        db: Session = Depends(get_db)
 ):
     event = (
         db.query(Event)
