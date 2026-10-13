@@ -1,132 +1,63 @@
-
 import pytest
 from pydantic import ValidationError
 
-from app.schemas import EventBase
-from app.utils.event_helpers import (
-    filter_events_by_location,
-    filter_events_by_title,
-)
+from app.utils.event_helpers import filter_events_by_location, filter_events_by_title
+from app.schemas import EventCreate
 
 
-@pytest.fixture
-def sample_events():
-    return [
-        {
-            "title": "Cybersecurity Conference",
-            "location": "Alger",
-        },
-        {
-            "title": "Python Workshop",
-            "location": "Oran",
-        },
-        {
-            "title": "Network Security",
-            "location": "Alger Centre",
-        },
-    ]
+# ---------- Happy path ----------
+def test_valid_event_creation(sample_event_dict):
+    event = EventCreate(**sample_event_dict)
+    assert event.title == "Python Workshop"
+    assert event.capacity == 50
 
 
-# --- Tests positifs ---
-
-def test_filter_events_by_location(sample_events):
-    result = filter_events_by_location(sample_events, "Alger")
-
-    assert len(result) == 2
-    assert all("Alger" in event["location"] for event in result)
-
-
-def test_filter_events_by_title(sample_events):
-    result = filter_events_by_title(sample_events, "Security")
-
-    assert len(result) == 2
-
-
-# --- Tests des limites ---
-
-def test_filter_location_case_insensitive(sample_events):
-    result = filter_events_by_location(sample_events, "ALGER")
-
-    assert len(result) == 2
-
-
-def test_filter_title_case_insensitive(sample_events):
-    result = filter_events_by_title(sample_events, "cybersecurity")
-
+def test_filter_by_location_case_insensitive(prepopulated_event_store):
+    result = filter_events_by_location(prepopulated_event_store, "CONSTANTINE")
     assert len(result) == 1
+    assert result[0]["title"] == "Python Workshop"
 
 
-def test_filter_returns_empty_list(sample_events):
-    result = filter_events_by_title(sample_events, "Nonexistent")
+def test_filter_by_title_case_insensitive(prepopulated_event_store):
+    result = filter_events_by_title(prepopulated_event_store, "devops")
+    assert [e["id"] for e in result] == [2]
 
-    assert result == []
+
+def test_filter_no_match_returns_empty(prepopulated_event_store):
+    assert filter_events_by_title(prepopulated_event_store, "zzz") == []
 
 
-# --- Tests négatifs ---
+# ---------- Boundary values ----------
+def test_capacity_lower_bound(sample_event_dict):
+    sample_event_dict["capacity"] = 1
+    assert EventCreate(**sample_event_dict).capacity == 1
 
-def test_event_title_too_short():
+
+def test_capacity_upper_bound(sample_event_dict):
+    sample_event_dict["capacity"] = 10000
+    assert EventCreate(**sample_event_dict).capacity == 10000
+
+
+def test_title_minimum_length(sample_event_dict):
+    sample_event_dict["title"] = "abc"  # exactly 3
+    assert EventCreate(**sample_event_dict).title == "abc"
+
+
+def test_capacity_just_above_upper_bound_fails(sample_event_dict):
+    sample_event_dict["capacity"] = 10001
     with pytest.raises(ValidationError):
-        EventBase(
-            title="AB",
-            description="Test",
-            date="2027-05-20",
-            location="Alger",
-            capacity=50,
-        )
+        EventCreate(**sample_event_dict)
 
 
-def test_event_capacity_too_low():
+# ---------- Negative ----------
+def test_short_title_rejected(sample_event_dict):
+    sample_event_dict["title"] = "ab"
     with pytest.raises(ValidationError):
-        EventBase(
-            title="Valid Event",
-            description="Test",
-            date="2027-05-20",
-            location="Alger",
-            capacity=0,
-        )
-
-def test_event_capacity_minimum_valid():
-    event = EventBase(
-        title="Valid Event",
-        description="Test",
-        date="2027-05-20",
-        location="Alger",
-        capacity=1,
-    )
-
-    assert event.capacity == 1
+        EventCreate(**sample_event_dict)
 
 
-def test_event_capacity_maximum_valid():
-    event = EventBase(
-        title="Valid Event",
-        description="Test",
-        date="2027-05-20",
-        location="Alger",
-        capacity=10000,
-    )
-
-    assert event.capacity == 10000
-
-
-def test_event_capacity_too_high():
+@pytest.mark.parametrize("bad_capacity", [0, -1, -100])
+def test_invalid_capacity_rejected(sample_event_dict, bad_capacity):
+    sample_event_dict["capacity"] = bad_capacity
     with pytest.raises(ValidationError):
-        EventBase(
-            title="Valid Event",
-            description="Test",
-            date="2027-05-20",
-            location="Alger",
-            capacity=10001,
-        )
-
-
-def test_event_title_minimum_valid():
-    event = EventBase(
-        title="ABC",
-        description="Test",
-        date="2027-05-20",
-        location="Alger",
-        capacity=10,
-    )
-
-    assert event.title == "ABC"
+        EventCreate(**sample_event_dict)

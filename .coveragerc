@@ -1,0 +1,10 @@
+[run]
+source = app
+omit =
+    app/main.py
+    app/database.py
+    app/models.py
+    app/routers/*
+
+[report]
+show_missing = True
