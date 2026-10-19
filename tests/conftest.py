@@ -18,7 +18,7 @@ def sample_event_dict():
 @pytest.fixture
 def sample_participant_dict():
     """A valid participant payload."""
-    return {"name": "Amine Benali", "email": "amine@example.com"}
+    return {"name": "Djamani", "email": "Djamani@example.com"}
 
 
 @pytest.fixture
@@ -40,7 +40,7 @@ def prepopulated_event_store(mock_event_store):
             {"id": 2, "title": "DevOps Summit", "date": future,
              "location": "Algiers", "capacity": 200},
             {"id": 3, "title": "Cyber Security Conference", "date": future,
-             "location": "Oran", "capacity": 500},
+             "location": "algiers", "capacity": 500},
         ]
     )
     return mock_event_store
