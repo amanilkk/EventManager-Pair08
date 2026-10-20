@@ -1,4 +1,3 @@
-
 from datetime import date
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -45,15 +44,9 @@ def create_event(
     response_model=list[EventSchema]
 )
 def list_events(
- feature-tests-participants
         search: str | None = Query(default=None),
         location: str | None = Query(default=None),
         db: Session = Depends(get_db)
-
-    search: str | None = Query(default=None),
-    location: str | None = Query(default=None),
-    db: Session = Depends(get_db)
- main
 ):
     query = db.query(Event)
 
