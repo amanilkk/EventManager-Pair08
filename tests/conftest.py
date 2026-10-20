@@ -59,3 +59,9 @@ def global_environment_logger():
     print("\n[SETUP] test starting")
     yield
     print("[TEARDOWN] test finished")
+
+def test_openapi_metadata(client):
+    info = client.get("/openapi.json").json()["info"]
+    assert info["title"] == "Event Manager API"
+    assert info["version"] == "1.0.0"
+    assert info["description"] == "A teaching project for Git, Docker and CI/CD"

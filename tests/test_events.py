@@ -184,3 +184,37 @@ def test_delete_event_not_found_returns_404(mock_db):
         delete_event(999, mock_db)
     assert exc.value.status_code == 404
     mock_db.delete.assert_not_called()
+
+
+def test_title_max_length_100_accepted(sample_event_dict):
+    sample_event_dict["title"] = "a" * 100
+    assert len(EventCreate(**sample_event_dict).title) == 100
+
+
+def test_title_101_chars_rejected(sample_event_dict):
+    sample_event_dict["title"] = "a" * 101
+    with pytest.raises(ValidationError):
+        EventCreate(**sample_event_dict)
+
+
+@pytest.mark.parametrize("loc, ok", [("a", False), ("ab", True),
+                                     ("a" * 100, True), ("a" * 101, False)])
+def test_location_length_bounds(sample_event_dict, loc, ok):
+    sample_event_dict["location"] = loc
+    if ok:
+        assert EventCreate(**sample_event_dict).location == loc
+    else:
+        with pytest.raises(ValidationError):
+            EventCreate(**sample_event_dict)
+
+
+def test_list_events_location_filter_pattern(mock_db):
+    list_events(search=None, location="CONST", db=mock_db)
+    expr = mock_db.query.return_value.filter.call_args[0][0]
+    assert expr.right.value == "%CONST%"
+
+
+def test_list_events_search_filter_pattern(mock_db):
+    list_events(search="PyThOn", location=None, db=mock_db)
+    expr = mock_db.query.return_value.filter.call_args[0][0]
+    assert expr.right.value == "%PyThOn%"    
