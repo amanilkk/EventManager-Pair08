@@ -4,7 +4,8 @@ from unittest.mock import MagicMock
 import pytest
 from fastapi import HTTPException
 from pydantic import ValidationError
-
+from unittest.mock import patch
+from app.database import get_db
 from app.routers.participants import (
     create_participant,
     delete_participant,
@@ -193,3 +194,36 @@ def test_list_event_participants_event_not_found_returns_404(mock_db):
     with pytest.raises(HTTPException) as exc:
         list_event_participants(999, mock_db)
     assert exc.value.status_code == 404
+
+@pytest.mark.parametrize("name, ok", [("A", False), ("Al", True),
+                                      ("a" * 100, True), ("a" * 101, False)])
+def test_name_length_bounds(sample_participant_dict, name, ok):
+    sample_participant_dict["name"] = name
+    if ok:
+        assert ParticipantCreate(**sample_participant_dict).name == name
+    else:
+        with pytest.raises(ValidationError):
+            ParticipantCreate(**sample_participant_dict)
+
+
+def test_register_duplicate_has_exact_detail(mock_db):
+    setup_register(mock_db, make_event(1, 10), MagicMock(), MagicMock())
+    with pytest.raises(HTTPException) as exc:
+        register_participant(1, 2, mock_db)
+    assert exc.value.detail == "Participant is already registered."
+
+
+def test_register_full_has_exact_detail(mock_db):
+    setup_register(mock_db, make_event(10, 10), MagicMock(), None)
+    with pytest.raises(HTTPException) as exc:
+        register_participant(1, 2, mock_db)
+    assert exc.value.detail == "Event capacity has been reached."
+
+
+def test_get_db_closes_session():
+    fake = MagicMock()
+    with patch("app.database.SessionLocal", return_value=fake):
+        gen = get_db()
+        assert next(gen) is fake
+        gen.close()
+    fake.close.assert_called_once()
