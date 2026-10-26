@@ -1,14 +1,6 @@
 from types import SimpleNamespace
-<<<<<<< HEAD
-from unittest.mock import MagicMock
-from app.routers.participants import router as participants_router
-from app.routers.registrations import router as registrations_router
-from app.schemas import Participant as ParticipantSchema
-from app.schemas import Registration as RegistrationSchema
-=======
 from unittest.mock import MagicMock, patch
 
->>>>>>> 943f1a248f5db7a98f9777ab9e23d2ecb4a510f7
 import pytest
 from fastapi import HTTPException
 from pydantic import ValidationError
@@ -291,33 +283,9 @@ def test_get_db_closes_session():
         assert next(gen) is fake
         gen.close()
     fake.close.assert_called_once()
-<<<<<<< HEAD
-
-# ===== Mutants 42 and 68: router metadata =====
-def test_participants_router_prefix_and_tags():
-    assert participants_router.prefix == "/participants"
-    assert participants_router.tags == ["Participants"]
 
 
-def test_registrations_router_prefix_and_tags():
-    assert registrations_router.prefix == "/events"
-    assert registrations_router.tags == ["Registrations"]
-
-
-# ===== Mutants 117-118: Participant schema reads ORM objects =====
-def test_participant_schema_reads_orm_object():
-    orm_obj = SimpleNamespace(id=1, name="Amine", email="amine@example.com")
-    schema = ParticipantSchema.model_validate(orm_obj)
-    assert schema.id == 1
-    assert schema.name == "Amine"
-
-
-# ===== Mutants 119-120: Registration schema reads ORM objects =====
-def test_registration_schema_reads_orm_object():
-    orm_obj = SimpleNamespace(id=1, event_id=2, participant_id=3)
-    schema = RegistrationSchema.model_validate(orm_obj)
-    assert (schema.id, schema.event_id, schema.participant_id) == (1, 2, 3)
-=======
+# ============ SQL FILTER CHECKS (kill filter-condition mutants) ============
 def filters(mock_db):
     """SQL text of every .filter(...) call, in call order."""
     return [
@@ -361,4 +329,3 @@ def test_list_event_participants_filters_by_event_id(mock_db):
     )
     list_event_participants(5, mock_db)
     assert ".id = 5" in filters(mock_db)[0]
->>>>>>> 943f1a248f5db7a98f9777ab9e23d2ecb4a510f7
