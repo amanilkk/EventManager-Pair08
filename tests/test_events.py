@@ -4,6 +4,10 @@ from unittest.mock import MagicMock
 import pytest
 from fastapi import HTTPException
 from pydantic import ValidationError
+from types import SimpleNamespace
+
+from app.routers.events import router as events_router
+from app.schemas import Event as EventSchema
 
 from app.routers.events import (
     create_event,
@@ -218,3 +222,21 @@ def test_list_events_search_filter_pattern(mock_db):
     list_events(search="PyThOn", location=None, db=mock_db)
     expr = mock_db.query.return_value.filter.call_args[0][0]
     assert expr.right.value == "%PyThOn%"    
+# ===== Mutant 2: router metadata =====
+def test_events_router_prefix_and_tags():
+    assert events_router.prefix == "/events"
+    assert events_router.tags == ["Events"]
+
+
+# ===== Mutant 105: description default =====
+def test_description_defaults_to_none(sample_event_dict):
+    sample_event_dict.pop("description")
+    assert EventCreate(**sample_event_dict).description is None
+
+
+# ===== Mutants 112-113: Event schema reads ORM objects =====
+def test_event_schema_reads_orm_object(sample_event_dict):
+    orm_obj = SimpleNamespace(id=1, **sample_event_dict)
+    schema = EventSchema.model_validate(orm_obj)
+    assert schema.id == 1
+    assert schema.title == "Python Workshop"
