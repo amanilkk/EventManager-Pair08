@@ -283,9 +283,6 @@ def test_get_db_closes_session():
         assert next(gen) is fake
         gen.close()
     fake.close.assert_called_once()
-
-
-# ============ SQL FILTER CHECKS (kill filter-condition mutants) ============
 def filters(mock_db):
     """SQL text of every .filter(...) call, in call order."""
     return [
