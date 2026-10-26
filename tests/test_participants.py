@@ -360,3 +360,12 @@ def test_registration_model():
     assert [c.name for c in uc.columns] == ["event_id", "participant_id"]
     assert Registration.event.property.back_populates == "registrations"
     assert Registration.participant.property.back_populates == "registrations"
+
+def test_engine_connect_args():
+    engine.dispose()
+    real_connect = engine.dialect.dbapi.connect
+    with patch.object(engine.dialect.dbapi, "connect", wraps=real_connect) as m:
+        with engine.connect():
+            pass
+    assert m.call_args.kwargs["check_same_thread"] is False
+    engine.dispose()
