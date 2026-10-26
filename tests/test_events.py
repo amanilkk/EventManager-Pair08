@@ -1,6 +1,10 @@
 from datetime import date, timedelta
 from unittest.mock import MagicMock
+from sqlalchemy import Date, Integer, String, Text
+from sqlalchemy.orm import configure_mappers
 
+from app.main import app, root
+from app.models import Event
 import pytest
 from fastapi import HTTPException
 from pydantic import ValidationError
@@ -240,3 +244,52 @@ def test_event_schema_reads_orm_object(sample_event_dict):
     schema = EventSchema.model_validate(orm_obj)
     assert schema.id == 1
     assert schema.title == "Python Workshop"
+
+def test_app_metadata():
+    assert app.title == "Event Manager API"
+    assert app.description == "A teaching project for Git, Docker and CI/CD"
+    assert app.version == "1.0.0"
+
+
+def test_root_message():
+    assert root() == {"message": "Welcome to Event Manager API"}
+
+
+def test_app_includes_all_routes():
+    paths = set(app.openapi()["paths"])
+    for p in ["/", "/events/", "/participants/",
+              "/events/{event_id}/register/{participant_id}",
+              "/events/{event_id}/participants"]:
+        assert p in paths
+
+def test_mappers_configure():
+    configure_mappers()
+
+
+def test_events_router_prefix():
+    from app.routers.events import router
+    assert router.prefix == "/events"
+    assert router.tags == ["Events"]
+
+
+def test_event_model_table_and_columns():
+    t = Event.__table__
+    assert t.name == "events"
+    assert t.c.id.primary_key and t.c.id.index
+    assert isinstance(t.c.title.type, String) and t.c.title.type.length == 100
+    assert isinstance(t.c.description.type, Text)
+    assert isinstance(t.c.date.type, Date)
+    assert isinstance(t.c.location.type, String) and t.c.location.type.length == 100
+    assert isinstance(t.c.capacity.type, Integer)
+    assert t.c.title.nullable is False
+    assert t.c.description.nullable is True
+    assert t.c.date.nullable is False
+    assert t.c.location.nullable is False
+    assert t.c.capacity.nullable is False
+
+
+def test_event_registrations_relationship():
+    prop = Event.registrations.property
+    assert prop.back_populates == "event"
+    assert prop.cascade.delete and prop.cascade.delete_orphan
+    assert prop.mapper.class_.__name__ == "Registration"

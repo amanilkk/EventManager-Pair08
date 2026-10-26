@@ -1,6 +1,7 @@
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
-
+from app.database import DATABASE_URL, SessionLocal, engine
+from app.models import Participant, Registration
 import pytest
 from fastapi import HTTPException
 from pydantic import ValidationError
@@ -326,3 +327,36 @@ def test_list_event_participants_filters_by_event_id(mock_db):
     )
     list_event_participants(5, mock_db)
     assert ".id = 5" in filters(mock_db)[0]
+
+def test_database_configuration():
+    assert DATABASE_URL == "sqlite:///./events.db"
+    assert str(engine.url) == "sqlite:///./events.db"
+    assert SessionLocal.kw["autocommit"] is False
+    assert SessionLocal.kw["autoflush"] is False
+    assert SessionLocal.kw["bind"] is engine
+
+
+def test_participant_model():
+    t = Participant.__table__
+    assert t.name == "participants"
+    assert t.c.id.primary_key and t.c.id.index
+    assert t.c.name.type.length == 100 and t.c.name.nullable is False
+    assert t.c.email.type.length == 150 and t.c.email.nullable is False
+    assert t.c.email.unique is True and t.c.email.index is True
+    prop = Participant.registrations.property
+    assert prop.back_populates == "participant"
+    assert prop.cascade.delete and prop.cascade.delete_orphan
+
+
+def test_registration_model():
+    t = Registration.__table__
+    assert t.name == "registrations"
+    assert t.c.id.primary_key and t.c.id.index
+    assert t.c.event_id.nullable is False
+    assert t.c.participant_id.nullable is False
+    assert next(iter(t.c.event_id.foreign_keys)).target_fullname == "events.id"
+    assert next(iter(t.c.participant_id.foreign_keys)).target_fullname == "participants.id"
+    uc = [c for c in t.constraints if c.name == "uq_event_participant"][0]
+    assert [c.name for c in uc.columns] == ["event_id", "participant_id"]
+    assert Registration.event.property.back_populates == "registrations"
+    assert Registration.participant.property.back_populates == "registrations"
