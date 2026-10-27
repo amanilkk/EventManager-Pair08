@@ -65,3 +65,14 @@ def test_openapi_metadata(client):
     assert info["title"] == "Event Manager API"
     assert info["version"] == "1.0.0"
     assert info["description"] == "A teaching project for Git, Docker and CI/CD"
+
+def pytest_sessionfinish(session, exitstatus):
+    """Report import-time crashes as ordinary test failures.
+
+    A mutant that breaks `import app` makes pytest exit with code 2
+    (collection error) instead of 1 (failed tests). mutmut 2.x only counts
+    exit code 1 as "killed", so remap it. The mutant is still detected
+    by the test suite; only the exit code is normalised.
+    """
+    if exitstatus in (2, 3):
+        session.exitstatus = pytest.ExitCode.TESTS_FAILED
