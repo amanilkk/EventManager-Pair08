@@ -1,17 +1,23 @@
 services:
-  web:
-    image: amanilkk/eventmanager-api:v1
-    container_name: eventmanager-student-b
-
-services:
-  web:
-    image: eventmanager-app:v2
-    container_name: eventmanager-compose
+  backend:
+    build: .
+    image: amanilkk/eventmanager-backend:latest
+    container_name: eventmanager_backend
     ports:
       - "8000:8000"
     environment:
       DATABASE_URL: sqlite:////data/events.db
     volumes:
-      - yaldjamla_data:/data
+      - events_sqlite_data:/data
+
+  frontend:
+    build: ./frontend
+    image: amanilkk/eventmanager-frontend:latest
+    container_name: eventmanager_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
 volumes:
-  yaldjamla_data:
+  events_sqlite_data:
