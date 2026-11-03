@@ -2,6 +2,11 @@ services:
   web:
     image: amanilkk/eventmanager-api:v1
     container_name: eventmanager-student-b
+
+services:
+  web:
+    image: eventmanager-app:v2
+    container_name: eventmanager-compose
     ports:
       - "8000:8000"
     environment:
