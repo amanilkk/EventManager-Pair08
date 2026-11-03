@@ -46,7 +46,7 @@ def test_register_participant_to_event_integration():
     part_id = p_resp.json()["id"]
 
     reg_resp = client.post(f"/events/{event_id}/register/{part_id}")
-    assert reg_resp.status_code == 200
+    assert reg_resp.status_code == 201
 
     list_resp = client.get(f"/events/{event_id}/participants")
     assert list_resp.status_code == 200
