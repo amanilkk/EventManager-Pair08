@@ -1,0 +1,12 @@
+services:
+  web:
+    image: amanilkk/eventmanager-api:v1
+    container_name: eventmanager-student-b
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////data/events.db
+    volumes:
+      - yaldjamla_data:/data
+volumes:
+  yaldjamla_data:

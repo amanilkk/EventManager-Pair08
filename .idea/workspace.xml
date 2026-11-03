@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="12aa5fba-1516-4288-bff7-7748f6096167" name="Changes" comment="tests">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lab3-student-b-participants" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;YLdjamila&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/smaaliSahar/EventManager-Pair08.git&quot;,
+    &quot;accountId&quot;: &quot;73889eeb-ef99-4d82-a84e-6d2f4846b57e&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.000000000000044" />
+      <entry key="S30" value="1.000447179609971" />
+      <entry key="S60" value="1.1457139093622295" />
+      <entry key="M2" value="3.6760775740894265" />
+      <entry key="M5" value="17.768294853486484" />
+      <entry key="M10" value="35.19272530302449" />
+      <entry key="M15" value="47.007615715378996" />
+      <entry key="M30" value="71.71698282177226" />
+      <entry key="H1" value="108.40638241716816" />
+      <entry key="H2" value="157.4426946076009" />
+      <entry key="H4" value="204.14036509122204" />
+      <entry key="D1" value="265.2686262662205" />
+      <entry key="W1" value="278.6667632518711" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="3.747851397768373E-166" />
+      <entry key="S5" value="6.753251832687654E-67" />
+      <entry key="S10" value="8.217817768006472E-34" />
+      <entry key="S30" value="9.406704322507992E-12" />
+      <entry key="S60" value="3.2605737574874236E-6" />
+      <entry key="M2" value="0.002196906489734488" />
+      <entry key="M5" value="0.12668940819850832" />
+      <entry key="M10" value="0.5456910445653799" />
+      <entry key="M15" value="0.95433727881735" />
+      <entry key="M30" value="1.896035355935179" />
+      <entry key="H1" value="2.9371784411451602" />
+      <entry key="H2" value="3.782671409503914" />
+      <entry key="H4" value="4.334361144588377" />
+      <entry key="D1" value="4.880045211004454" />
+      <entry key="W1" value="4.982626757712777" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.1292968440878391E-8" />
+      <entry key="MS500" value="0.025737219289611663" />
+      <entry key="S2" value="0.40053493879481106" />
+      <entry key="S5" value="0.6935154845656926" />
+      <entry key="S10" value="0.832775770880593" />
+      <entry key="S30" value="0.9412730624581721" />
+      <entry key="S60" value="1.1156392926670726" />
+      <entry key="M2" value="3.6627153514095725" />
+      <entry key="M5" value="17.886972875474793" />
+      <entry key="M10" value="35.73224803949534" />
+      <entry key="M15" value="47.956428187737856" />
+      <entry key="M30" value="73.60848277174219" />
+      <entry key="H1" value="111.34002711875992" />
+      <entry key="H2" value="161.22284043590597" />
+      <entry key="H4" value="208.4731163686825" />
+      <entry key="D1" value="270.1483278250276" />
+      <entry key="W1" value="283.6493385477606" />
+    </decayedShown>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:/xampp/php/php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3Kedwo03DjB64vU0uHQPpqkCet7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "lab4-docker",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/DeLL/Desktop/EventManager/EventManager-Pair08",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "show.migrate.to.gradle.popup": "false",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="EventManager-Pair08" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="EventManager-Pair08" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12aa5fba-1516-4288-bff7-7748f6096167" name="Changes" comment="" />
+      <created>1791922208861</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1791922208861</updated>
+      <workItem from="1791922210453" duration="3584000" />
+      <workItem from="1792004460574" duration="757000" />
+      <workItem from="1792434931268" duration="4887000" />
+      <workItem from="1792447625843" duration="77000" />
+      <workItem from="1792496433086" duration="4910000" />
+      <workItem from="1792523936123" duration="7876000" />
+      <workItem from="1792771153730" duration="1523000" />
+      <workItem from="1792784731052" duration="971000" />
+      <workItem from="1793038959969" duration="13022000" />
+      <workItem from="1793102383157" duration="3647000" />
+      <workItem from="1793642885454" duration="5948000" />
+    </task>
+    <task id="LOCAL-00001" summary="some changement">
+      <option name="closed" value="true" />
+      <created>1791923714959</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1791923714961</updated>
+    </task>
+    <task id="LOCAL-00002" summary="tests">
+      <option name="closed" value="true" />
+      <created>1791925197108</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1791925197108</updated>
+    </task>
+    <task id="LOCAL-00003" summary="tests">
+      <option name="closed" value="true" />
+      <created>1792498761972</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1792498761972</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="some changement" />
+    <MESSAGE value="tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="tests" />
+  </component>
+</project>
