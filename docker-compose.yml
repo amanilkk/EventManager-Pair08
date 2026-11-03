@@ -1,3 +1,7 @@
+services:
+  web:
+    image: amanilkk/eventmanager-api:v1
+    container_name: eventmanager-student-b
 
 services:
   web:
@@ -8,8 +12,6 @@ services:
     environment:
       DATABASE_URL: sqlite:////data/events.db
     volumes:
-      - events_sqlite_data:/data
-
+      - yaldjamla_data:/data
 volumes:
-  events_sqlite_data:
-    external: true
+  yaldjamla_data:
