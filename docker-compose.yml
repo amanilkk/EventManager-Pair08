@@ -1,0 +1,15 @@
+
+services:
+  web:
+    image: eventmanager-app:v2
+    container_name: eventmanager-compose
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////data/events.db
+    volumes:
+      - events_sqlite_data:/data
+
+volumes:
+  events_sqlite_data:
+    external: true
