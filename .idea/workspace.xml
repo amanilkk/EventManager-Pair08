@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12aa5fba-1516-4288-bff7-7748f6096167" name="Changes" comment="tests">
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/backend-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/events-pvc.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_integration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +125,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "feature/frontend",
+    "git-widget-placeholder": "feature/k8s-backend",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/DeLL/Desktop/EventManager/EventManager-Pair08",
@@ -142,20 +141,16 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="EventManager-Pair08" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+    <configuration default="true" type="Tox" factoryName="Tox">
       <module name="EventManager-Pair08" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -163,13 +158,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="false" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
   </component>
@@ -199,6 +187,7 @@
       <workItem from="1793038959969" duration="13022000" />
       <workItem from="1793102383157" duration="3647000" />
       <workItem from="1793642885454" duration="5948000" />
+      <workItem from="1794311189257" duration="1098000" />
     </task>
     <task id="LOCAL-00001" summary="some changement">
       <option name="closed" value="true" />
