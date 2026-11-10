@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12aa5fba-1516-4288-bff7-7748f6096167" name="Changes" comment="tests">
-      <change afterPath="$PROJECT_DIR$/tests/test_integration.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/backend-deployment.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k8s/events-pvc.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.000000000000044" />
-      <entry key="S30" value="1.000447179609971" />
-      <entry key="S60" value="1.1457139093622295" />
-      <entry key="M2" value="3.6760775740894265" />
-      <entry key="M5" value="17.768294853486484" />
-      <entry key="M10" value="35.19272530302449" />
-      <entry key="M15" value="47.007615715378996" />
-      <entry key="M30" value="71.71698282177226" />
-      <entry key="H1" value="108.40638241716816" />
-      <entry key="H2" value="157.4426946076009" />
-      <entry key="H4" value="204.14036509122204" />
-      <entry key="D1" value="265.2686262662205" />
-      <entry key="W1" value="278.6667632518711" />
+      <entry key="MS100" value="1.0000000013132435" />
+      <entry key="MS500" value="1.0385289178484383" />
+      <entry key="S2" value="3.1384480575209377" />
+      <entry key="S5" value="9.64318046383073" />
+      <entry key="S10" value="16.76308520542912" />
+      <entry key="S30" value="26.28785124507679" />
+      <entry key="S60" value="29.8084318595396" />
+      <entry key="M2" value="32.08684119949788" />
+      <entry key="M5" value="39.500307858449716" />
+      <entry key="M10" value="56.03958219759891" />
+      <entry key="M15" value="71.37538662533605" />
+      <entry key="M30" value="106.14458189989" />
+      <entry key="H1" value="152.96630189911244" />
+      <entry key="H2" value="211.23158875631572" />
+      <entry key="H4" value="266.4728781155283" />
+      <entry key="D1" value="339.87372631915383" />
+      <entry key="W1" value="356.15707909998514" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.747851397768373E-166" />
-      <entry key="S5" value="6.753251832687654E-67" />
-      <entry key="S10" value="8.217817768006472E-34" />
-      <entry key="S30" value="9.406704322507992E-12" />
-      <entry key="S60" value="3.2605737574874236E-6" />
-      <entry key="M2" value="0.002196906489734488" />
-      <entry key="M5" value="0.12668940819850832" />
-      <entry key="M10" value="0.5456910445653799" />
-      <entry key="M15" value="0.95433727881735" />
-      <entry key="M30" value="1.896035355935179" />
-      <entry key="H1" value="2.9371784411451602" />
-      <entry key="H2" value="3.782671409503914" />
-      <entry key="H4" value="4.334361144588377" />
-      <entry key="D1" value="4.880045211004454" />
-      <entry key="W1" value="4.982626757712777" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.2674480475531704E-154" />
+      <entry key="S10" value="1.1258100396566375E-77" />
+      <entry key="S30" value="2.2508179165541297E-26" />
+      <entry key="S60" value="1.5949440910844527E-13" />
+      <entry key="M2" value="4.858892485164591E-7" />
+      <entry key="M5" value="0.004371501124760122" />
+      <entry key="M10" value="0.10136592085640486" />
+      <entry key="M15" value="0.3106933690598161" />
+      <entry key="M30" value="1.081836124732179" />
+      <entry key="H1" value="2.2186451959911313" />
+      <entry key="H2" value="3.28758794196304" />
+      <entry key="H4" value="4.040773203242925" />
+      <entry key="D1" value="4.8233311042321505" />
+      <entry key="W1" value="4.97431293224529" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.1292968440878391E-8" />
-      <entry key="MS500" value="0.025737219289611663" />
-      <entry key="S2" value="0.40053493879481106" />
-      <entry key="S5" value="0.6935154845656926" />
-      <entry key="S10" value="0.832775770880593" />
-      <entry key="S30" value="0.9412730624581721" />
-      <entry key="S60" value="1.1156392926670726" />
-      <entry key="M2" value="3.6627153514095725" />
-      <entry key="M5" value="17.886972875474793" />
-      <entry key="M10" value="35.73224803949534" />
-      <entry key="M15" value="47.956428187737856" />
-      <entry key="M30" value="73.60848277174219" />
-      <entry key="H1" value="111.34002711875992" />
-      <entry key="H2" value="161.22284043590597" />
-      <entry key="H4" value="208.4731163686825" />
-      <entry key="D1" value="270.1483278250276" />
-      <entry key="W1" value="283.6493385477606" />
+      <entry key="MS100" value="0.14762408384820744" />
+      <entry key="MS500" value="0.7197861065946514" />
+      <entry key="S2" value="3.0355060246649033" />
+      <entry key="S5" value="9.581235416986456" />
+      <entry key="S10" value="16.716769098596565" />
+      <entry key="S30" value="26.26408114851334" />
+      <entry key="S60" value="29.794864857892733" />
+      <entry key="M2" value="32.079512657122805" />
+      <entry key="M5" value="39.500934717735674" />
+      <entry key="M10" value="56.137667041625555" />
+      <entry key="M15" value="71.68269321180388" />
+      <entry key="M30" value="107.22292166049323" />
+      <entry key="H1" value="155.18178695278596" />
+      <entry key="H2" value="214.51672587503168" />
+      <entry key="H4" value="270.5120198424269" />
+      <entry key="D1" value="344.6966955916887" />
+      <entry key="W1" value="361.1313374787202" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:/xampp/php/php.exe" />
@@ -123,7 +125,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/k8s-backend",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/DeLL/Desktop/EventManager/EventManager-Pair08",
@@ -139,20 +141,16 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <module name="EventManager-Pair08" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+    <configuration default="true" type="Tox" factoryName="Tox">
       <module name="EventManager-Pair08" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -160,13 +158,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="false" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
   </component>
@@ -196,6 +187,7 @@
       <workItem from="1793038959969" duration="13022000" />
       <workItem from="1793102383157" duration="3647000" />
       <workItem from="1793642885454" duration="5948000" />
+      <workItem from="1794311189257" duration="1098000" />
     </task>
     <task id="LOCAL-00001" summary="some changement">
       <option name="closed" value="true" />

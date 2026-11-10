@@ -1,0 +1,18 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Event Manager</title></head>
+<body>
+<h1>Event Manager UI</h1>
+<button onclick="loadEvents()">Fetch Events</button>
+<ul id="eventList"></ul>
+<script>
+    async function loadEvents() {
+        const res = await fetch('http://localhost:8000/events/');
+        const events = await res.json();
+        document.getElementById('eventList').innerHTML =
+            events.map(e => `<li>${e.title} - ${e.location}</li>`).join('');
+    }
+</script>
+</body>
+</html>
