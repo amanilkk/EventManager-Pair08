@@ -2,9 +2,9 @@ name: Event Manager CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -66,3 +66,25 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/eventmanager-frontend:latest
+  deploy:
+    runs-on: self-hosted
+    needs: [build-and-push-backend, build-and-push-frontend]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Dry-run check
+        run: kubectl apply --dry-run=client -f k8s/
+
+      - name: Apply manifests
+        run: kubectl apply -f k8s/
+
+      - name: Rollout restart
+        run: |
+          kubectl rollout restart deployment/backend-deployment
+          kubectl rollout restart deployment/frontend-deployment
+
+      - name: Verify rollout
+        run: |
+          kubectl rollout status deployment/backend-deployment --timeout=180s
+          kubectl rollout status deployment/frontend-deployment --timeout=180s
