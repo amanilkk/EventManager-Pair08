@@ -19,6 +19,9 @@ spec:
       containers:
         - name: backend
           image: amanilkk/eventmanager-backend:latest
+          env:
+            - name: DATABASE_URL
+              value: "sqlite:////app/data/events.db"
           ports:
             - containerPort: 8000
           livenessProbe:
